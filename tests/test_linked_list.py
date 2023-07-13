@@ -47,3 +47,27 @@ def test_linked_list_str(empty_linked_list):
     empty_linked_list.insert_at_end({'id': 3})
     empty_linked_list.insert_beginning({'id': 0})
     assert str(empty_linked_list) == "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"
+
+
+def test_linked_list_to_list(empty_linked_list):
+    empty_linked_list.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+    empty_linked_list.insert_at_end({'id': 2, 'username': 'mik.roz'})
+    empty_linked_list.insert_at_end({'id': 3, 'username': 'mosh_s'})
+    empty_linked_list.insert_at_end('idusername')
+    empty_linked_list.insert_at_end([1, 2, 3])
+    empty_linked_list.insert_beginning({'id': 0, 'username': 'serebro'})
+
+    # метод to_list()
+    lst = empty_linked_list.to_list()
+    assert lst == [{'id': 0, 'username': 'serebro'}, {'id': 1, 'username': 'lazzy508509'},
+                   {'id': 2, 'username': 'mik.roz'}, {'id': 3, 'username': 'mosh_s'}]
+
+
+def test_linked_list_get_data_by_id(empty_linked_list):
+    empty_linked_list.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+    empty_linked_list.insert_at_end({'id': 2, 'username': 'mik.roz'})
+    empty_linked_list.insert_at_end({'id': 3, 'username': 'mosh_s'})
+    empty_linked_list.insert_beginning({'id': 0, 'username': 'serebro'})
+    empty_linked_list.insert_at_end({'id': 2, 'username': 'mosh_s'})
+
+    assert empty_linked_list.get_data_by_id(2) == {'id': 2, 'username': 'mik.roz'}
